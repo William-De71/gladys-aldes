@@ -1,0 +1,34 @@
+Gladys Aldes integration
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It calls the cloud service behind the AldesConnect app
+(https://aldesiotsuite-aldeswebapi.azurewebsites.net) with the e-mail and the
+password of the user's AldesConnect account, the way the app does. Aldes
+publishes no documentation for it. Aldes, AldesConnect, InspirAIR, EasyHOME,
+Dee Fly and T.One are trademarks of Aldes; this integration is not affiliated
+with nor endorsed by Aldes.
+
+Protocol knowledge
+------------------
+The routes, the commands, the fields of the products and their meaning (mode
+letters, tenths of degrees, holiday command, setpoint bounds) come from these
+community projects, read but not copied:
+  - homeassistant-aldes by guix77 (MIT),
+    https://github.com/guix77/homeassistant-aldes;
+  - homeassistant-aldes by saniho (MIT),
+    https://github.com/saniho/homeassistant-aldes, and aldes-bridge (MIT),
+    https://github.com/saniho/aldes-bridge (mode tables of the T.One);
+  - aldes-homebridge-plugin by jp-gouin (Apache-2.0),
+    https://github.com/jp-gouin/aldes-homebridge-plugin;
+  - homebridge-aldesVMC by jakatt (MIT),
+    https://github.com/jakatt/homebridge-aldesVMC;
+  - aldes2mqtt by Smeagolworms4, https://github.com/Smeagolworms4/aldes2mqtt;
+  - aldes-mqtt-bridge (MIT), https://github.com/djo1338/aldes-mqtt-bridge
+    (the command formats, docs/PROTOCOL.md);
+  - hassio_aldes by aalmazanarbs, https://github.com/aalmazanarbs/hassio_aldes.
+Only facts about the service were taken from them (endpoints, field names,
+codes), never code. The answers to wrong credentials and to a missing or
+refused token were checked against the service itself. This integration is an
+independent JavaScript implementation.

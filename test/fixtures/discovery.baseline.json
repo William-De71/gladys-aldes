@@ -1,0 +1,715 @@
+{
+  "devices": {
+    "ventilation": {
+      "external_id": "ext:test-integration:ventilation:AABBCC000001",
+      "should_poll": false,
+      "params": ["ALDES_KIND", "ALDES_REFERENCE"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:mode",
+          "category": "text",
+          "type": "select",
+          "min": 0,
+          "max": 0,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": ["daily", "boost", "guests", "holidays", "schedule"]
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:co2",
+          "category": "co2-sensor",
+          "type": "decimal",
+          "unit": "ppm",
+          "min": 0,
+          "max": 5000,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_kitchen",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_kitchen",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_bathroom_1",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_bathroom_1",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_bathroom_2",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_bathroom_2",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_bathroom_3",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_bathroom_3",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_bathroom_4",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_bathroom_4",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_bathroom_5",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_bathroom_5",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:filter_life",
+          "category": "maintenance",
+          "type": "life-remaining",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        }
+      ]
+    },
+    "ventilation_bare": {
+      "external_id": "ext:test-integration:ventilation:AABBCC000001",
+      "should_poll": false,
+      "params": ["ALDES_KIND", "ALDES_REFERENCE"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:mode",
+          "category": "text",
+          "type": "select",
+          "min": 0,
+          "max": 0,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": ["daily", "boost", "guests", "holidays", "schedule"]
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:temperature_kitchen",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ventilation:AABBCC000001:humidity_kitchen",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        }
+      ]
+    },
+    "heat_pump_aqua": {
+      "external_id": "ext:test-integration:heat_pump:AABBCC000002",
+      "should_poll": false,
+      "params": ["ALDES_KIND", "ALDES_REFERENCE"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:heat_pump:AABBCC000002:air_mode",
+          "category": "text",
+          "type": "select",
+          "min": 0,
+          "max": 0,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [
+            "off",
+            "heat_comfort",
+            "heat_eco",
+            "heat_prog_a",
+            "heat_prog_b",
+            "cool_comfort",
+            "cool_boost",
+            "cool_prog_c",
+            "cool_prog_d"
+          ]
+        },
+        {
+          "external_id": "ext:test-integration:heat_pump:AABBCC000002:hot_water_mode",
+          "category": "water-heater",
+          "type": "mode",
+          "min": 0,
+          "max": 4,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [4, 3, 0]
+        },
+        {
+          "external_id": "ext:test-integration:heat_pump:AABBCC000002:hot_water_level",
+          "category": "water-heater",
+          "type": "remaining-hot-water",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:heat_pump:AABBCC000002:temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        }
+      ]
+    },
+    "heat_pump_air": {
+      "external_id": "ext:test-integration:heat_pump:AABBCC000002",
+      "should_poll": false,
+      "params": ["ALDES_KIND", "ALDES_REFERENCE"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:heat_pump:AABBCC000002:air_mode",
+          "category": "text",
+          "type": "select",
+          "min": 0,
+          "max": 0,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [
+            "off",
+            "heat_comfort",
+            "heat_eco",
+            "heat_prog_a",
+            "heat_prog_b",
+            "cool_comfort",
+            "cool_boost",
+            "cool_prog_c",
+            "cool_prog_d"
+          ]
+        },
+        {
+          "external_id": "ext:test-integration:heat_pump:AABBCC000002:temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        }
+      ]
+    },
+    "thermostat": {
+      "external_id": "ext:test-integration:thermostat:AABBCC000002:18991",
+      "should_poll": false,
+      "params": ["ALDES_KIND", "ALDES_MODEM"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:thermostat:AABBCC000002:18991:target_temperature",
+          "category": "thermostat",
+          "type": "target-temperature",
+          "unit": "celsius",
+          "min": 16,
+          "max": 31,
+          "step": 1,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:thermostat:AABBCC000002:18991:temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:thermostat:AABBCC000002:18991:humidity",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "config_schema": [
+      {
+        "key": "intro",
+        "type": "section"
+      },
+      {
+        "key": "email",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "type": "secret"
+      },
+      {
+        "key": "refresh_minutes",
+        "type": "select"
+      },
+      {
+        "key": "language",
+        "type": "select"
+      }
+    ],
+    "config_options": {
+      "refresh_minutes": ["1", "2", "5", "10"],
+      "language": ["auto", "en", "fr", "de", "es"]
+    },
+    "actions": ["test_connection"],
+    "widgets": [
+      {
+        "key": "ventilation",
+        "settings": ["device"]
+      },
+      {
+        "key": "heat_pump",
+        "settings": ["device"]
+      }
+    ],
+    "widget_actions": ["boost", "daily", "refresh"],
+    "scene_triggers": [
+      {
+        "key": "mode_changed",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": [
+              "daily",
+              "boost",
+              "guests",
+              "holidays",
+              "schedule",
+              "off",
+              "heat_comfort",
+              "heat_eco",
+              "heat_prog_a",
+              "heat_prog_b",
+              "cool_comfort",
+              "cool_boost",
+              "cool_prog_c",
+              "cool_prog_d"
+            ]
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "kind",
+            "type": "string"
+          },
+          {
+            "key": "mode",
+            "type": "string"
+          },
+          {
+            "key": "previous_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "connection_changed",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["offline", "online"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "kind",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "filter_due",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "kind",
+            "type": "string"
+          },
+          {
+            "key": "filter_life",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "holiday_changed",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["started", "ended"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "kind",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "end",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "set_ventilation_mode",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": ["daily", "boost", "guests", "schedule"]
+          }
+        ],
+        "outputs": [
+          {
+            "key": "count",
+            "type": "number"
+          },
+          {
+            "key": "failed",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "boost_ventilation",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "minutes",
+            "options": []
+          }
+        ],
+        "outputs": [
+          {
+            "key": "count",
+            "type": "number"
+          },
+          {
+            "key": "failed",
+            "type": "number"
+          },
+          {
+            "key": "until",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "set_air_mode",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": [
+              "off",
+              "heat_comfort",
+              "heat_eco",
+              "heat_prog_a",
+              "heat_prog_b",
+              "cool_comfort",
+              "cool_boost",
+              "cool_prog_c",
+              "cool_prog_d"
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "key": "count",
+            "type": "number"
+          },
+          {
+            "key": "failed",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "set_hot_water",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": ["on", "boost", "off"]
+          }
+        ],
+        "outputs": [
+          {
+            "key": "count",
+            "type": "number"
+          },
+          {
+            "key": "failed",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "set_holiday",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "days",
+            "options": []
+          }
+        ],
+        "outputs": [
+          {
+            "key": "count",
+            "type": "number"
+          },
+          {
+            "key": "failed",
+            "type": "number"
+          },
+          {
+            "key": "until",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "read_now",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "outputs": [
+          {
+            "key": "mode",
+            "type": "string"
+          },
+          {
+            "key": "mode_label",
+            "type": "string"
+          },
+          {
+            "key": "co2",
+            "type": "number"
+          },
+          {
+            "key": "temperature",
+            "type": "number"
+          },
+          {
+            "key": "humidity",
+            "type": "number"
+          },
+          {
+            "key": "hot_water",
+            "type": "number"
+          },
+          {
+            "key": "filter_life",
+            "type": "number"
+          },
+          {
+            "key": "online",
+            "type": "boolean"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "gladys-aldes",
+  "version": "0.1.0",
+  "private": true,
+  "description": "External Gladys Assistant integration for Aldes (AldesConnect cloud): ventilation units (InspirAIR, EasyHOME, Dee Fly Cube) with mode, CO2, humidity and filter, T.One heat pumps with air and hot water modes and room thermostats, scene triggers and actions, dashboard widgets.",
+  "homepage": "https://github.com/William-De71/gladys-aldes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-De71/gladys-aldes.git"
+  },
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@gladysassistant/integration-sdk": "^0.16.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "gladys-assistant",
+    "gladys-assistant-integration",
+    "aldes",
+    "aldesconnect",
+    "inspirair",
+    "easyhome",
+    "t-one",
+    "ventilation",
+    "heat-pump",
+    "home-automation"
+  ]
+}

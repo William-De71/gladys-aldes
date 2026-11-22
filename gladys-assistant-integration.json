@@ -1,0 +1,1516 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "Aldes",
+  "description": {
+    "en": "Aldes ventilation (InspirAIR, EasyHOME) and T.One heat pumps: modes, CO2, rooms, scenes.",
+    "fr": "VMC Aldes (InspirAIR, EasyHOME) et PAC T.One : modes, CO2, pièces, eau chaude, scènes.",
+    "de": "Aldes-Lüftung (InspirAIR, EasyHOME) und T.One-Wärmepumpen: Modi, CO2, Räume, Szenen.",
+    "es": "VMC Aldes (InspirAIR, EasyHOME) y bombas de calor T.One: modos, CO2, estancias, escenas."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-aldes:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "categories": ["climate", "environment"],
+  "keywords": [
+    "aldes",
+    "aldesconnect",
+    "inspirair",
+    "easyhome",
+    "dee fly",
+    "t.one",
+    "aquaair",
+    "vmc",
+    "ventilation",
+    "pompe à chaleur"
+  ],
+  "countries": ["FR", "BE", "LU", "CH"],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-aldes/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Aldes",
+        "fr": "Aldes",
+        "de": "Aldes",
+        "es": "Aldes"
+      },
+      "description": {
+        "en": "How to connect:\n1. Check that your ventilation unit or T.One works in the AldesConnect app.\n2. Enter below the e-mail and the password of the AldesConnect app.\n3. In the Discover tab, add your ventilation unit, your T.One and its room thermostats.\nThe integration uses the service behind the AldesConnect app, which Aldes does not document: it may change without notice. Commands go through the Aldes cloud, and a change made in the app reaches Gladys at the next reading.",
+        "fr": "Pour se connecter :\n1. Vérifiez que votre VMC ou votre T.One fonctionne dans l’application AldesConnect.\n2. Saisissez ci-dessous l’e-mail et le mot de passe de l’application AldesConnect.\n3. Dans l’onglet Découverte, ajoutez votre VMC, votre T.One et ses thermostats de pièce.\nL’intégration utilise le service de l’application AldesConnect, qu’Aldes ne documente pas : il peut changer sans préavis. Les commandes passent par le cloud Aldes, et un changement fait dans l’application atteint Gladys au relevé suivant.",
+        "de": "So verbinden Sie sich:\n1. Prüfen Sie, dass Ihr Lüftungsgerät oder Ihre T.One in der AldesConnect-App funktioniert.\n2. Geben Sie unten E-Mail und Passwort der AldesConnect-App ein.\n3. Fügen Sie im Reiter Entdecken Ihr Lüftungsgerät, Ihre T.One und ihre Raumthermostate hinzu.\nDie Integration nutzt den Dienst hinter der AldesConnect-App, den Aldes nicht dokumentiert: Er kann sich ohne Vorankündigung ändern. Befehle laufen über die Aldes-Cloud, und eine Änderung in der App erreicht Gladys bei der nächsten Abfrage.",
+        "es": "Cómo conectarse:\n1. Compruebe que su VMC o su T.One funciona en la app AldesConnect.\n2. Introduzca abajo el correo y la contraseña de la app AldesConnect.\n3. En la pestaña Descubrir, añada su VMC, su T.One y sus termostatos de estancia.\nLa integración usa el servicio de la app AldesConnect, que Aldes no documenta: puede cambiar sin previo aviso. Las órdenes pasan por la nube de Aldes, y un cambio hecho en la app llega a Gladys en la siguiente lectura."
+      },
+      "links": [
+        {
+          "url": "https://github.com/William-De71/gladys-aldes/blob/main/docs/fr.md",
+          "label": {
+            "en": "Documentation (French)",
+            "fr": "Documentation",
+            "de": "Dokumentation (Französisch)",
+            "es": "Documentación (francés)"
+          }
+        },
+        {
+          "url": "https://github.com/William-De71/gladys-aldes/blob/main/docs/en.md",
+          "label": {
+            "en": "Documentation",
+            "fr": "Documentation (anglais)",
+            "de": "Dokumentation (Englisch)",
+            "es": "Documentación (inglés)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "email",
+      "type": "string",
+      "required": true,
+      "label": {
+        "en": "E-mail",
+        "fr": "E-mail",
+        "de": "E-Mail",
+        "es": "Correo electrónico"
+      },
+      "description": {
+        "en": "The e-mail of your AldesConnect account.",
+        "fr": "L’e-mail de votre compte AldesConnect.",
+        "de": "Die E-Mail Ihres AldesConnect-Kontos.",
+        "es": "El correo de su cuenta AldesConnect."
+      },
+      "placeholder": {
+        "en": "name@example.com",
+        "fr": "name@example.com",
+        "de": "name@example.com",
+        "es": "name@example.com"
+      }
+    },
+    {
+      "key": "password",
+      "type": "secret",
+      "required": true,
+      "label": {
+        "en": "Password",
+        "fr": "Mot de passe",
+        "de": "Passwort",
+        "es": "Contraseña"
+      },
+      "description": {
+        "en": "The password of your AldesConnect account. Sent to Aldes only, kept in memory, never shown again.",
+        "fr": "Le mot de passe de votre compte AldesConnect. Envoyé à Aldes uniquement, gardé en mémoire, jamais réaffiché.",
+        "de": "Das Passwort Ihres AldesConnect-Kontos. Wird nur an Aldes gesendet, im Speicher gehalten und nie wieder angezeigt.",
+        "es": "La contraseña de su cuenta AldesConnect. Solo se envía a Aldes, se guarda en memoria y nunca se vuelve a mostrar."
+      },
+      "placeholder": {
+        "en": "Password",
+        "fr": "Mot de passe",
+        "de": "Passwort",
+        "es": "Contraseña"
+      }
+    },
+    {
+      "key": "refresh_minutes",
+      "type": "select",
+      "label": {
+        "en": "Reading interval",
+        "fr": "Intervalle de relevé",
+        "de": "Abfrageintervall",
+        "es": "Intervalo de lectura"
+      },
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "en": "Every 1 min",
+            "fr": "Toutes les 1 min",
+            "de": "Alle 1 Min.",
+            "es": "Cada 1 min"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "en": "Every 2 min",
+            "fr": "Toutes les 2 min",
+            "de": "Alle 2 Min.",
+            "es": "Cada 2 min"
+          }
+        },
+        {
+          "value": "5",
+          "label": {
+            "en": "Every 5 min",
+            "fr": "Toutes les 5 min",
+            "de": "Alle 5 Min.",
+            "es": "Cada 5 min"
+          }
+        },
+        {
+          "value": "10",
+          "label": {
+            "en": "Every 10 min",
+            "fr": "Toutes les 10 min",
+            "de": "Alle 10 Min.",
+            "es": "Cada 10 min"
+          }
+        }
+      ],
+      "default": "2",
+      "description": {
+        "en": "One request reads every product of the account.",
+        "fr": "Une seule requête relève tous les produits du compte.",
+        "de": "Eine Anfrage liest alle Produkte des Kontos.",
+        "es": "Una sola petición lee todos los productos de la cuenta."
+      }
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the device texts",
+        "fr": "Langue des textes des appareils",
+        "de": "Sprache der Gerätetexte",
+        "es": "Idioma de los textos de los dispositivos"
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ],
+      "default": "auto",
+      "description": {
+        "en": "Names of the features and modes, messages of the button below. Automatic: the language of the dashboard once a widget is shown.",
+        "fr": "Noms des fonctionnalités et des modes, messages du bouton ci-dessous. Automatique : la langue du tableau de bord dès qu’un widget est affiché.",
+        "de": "Namen der Funktionen und Modi, Meldungen der Schaltfläche unten. Automatisch: die Sprache des Dashboards, sobald ein Widget angezeigt wird.",
+        "es": "Nombres de las funciones y modos, mensajes del botón de abajo. Automático: el idioma del panel en cuanto se muestra un widget."
+      }
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Test the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung testen",
+        "es": "Probar la conexión"
+      },
+      "description": {
+        "en": "Signs in to AldesConnect now and lists the products and room thermostats found.",
+        "fr": "Se connecte maintenant à AldesConnect et liste les produits et thermostats de pièce trouvés.",
+        "de": "Meldet sich jetzt bei AldesConnect an und listet die gefundenen Produkte und Raumthermostate auf.",
+        "es": "Inicia sesión ahora en AldesConnect y lista los productos y termostatos de estancia encontrados."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "ventilation",
+      "icon": "wind",
+      "label": {
+        "en": "Aldes ventilation",
+        "fr": "VMC Aldes",
+        "de": "Aldes-Lüftung",
+        "es": "VMC Aldes"
+      },
+      "description": {
+        "en": "CO2, kitchen temperature and humidity, filter, mode, boost and daily buttons.",
+        "fr": "CO2, température et humidité cuisine, filtre, mode, boutons boost et quotidien.",
+        "de": "CO2, Küchentemperatur und -feuchte, Filter, Modus, Tasten Boost und Täglich.",
+        "es": "CO2, temperatura y humedad de cocina, filtro, modo, botones boost y diario."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Ventilation unit",
+            "fr": "VMC",
+            "de": "Lüftungsgerät",
+            "es": "VMC"
+          },
+          "description": {
+            "en": "Empty: the first ventilation unit.",
+            "fr": "Vide : la première VMC.",
+            "de": "Leer: das erste Lüftungsgerät.",
+            "es": "Vacío: la primera VMC."
+          }
+        }
+      ],
+      "action_timeout_seconds": 60
+    },
+    {
+      "key": "heat_pump",
+      "icon": "thermometer",
+      "label": {
+        "en": "Aldes T.One",
+        "fr": "Aldes T.One",
+        "de": "Aldes T.One",
+        "es": "Aldes T.One"
+      },
+      "description": {
+        "en": "Indoor temperature, hot water, rooms with their setpoints, air and water modes.",
+        "fr": "Température intérieure, eau chaude, pièces et consignes, modes air et eau.",
+        "de": "Innentemperatur, Warmwasser, Räume mit Sollwerten, Luft- und Wassermodus.",
+        "es": "Temperatura interior, agua caliente, estancias y consignas, modos aire y agua."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "T.One heat pump",
+            "fr": "Pompe à chaleur T.One",
+            "de": "T.One-Wärmepumpe",
+            "es": "Bomba de calor T.One"
+          },
+          "description": {
+            "en": "Empty: the first T.One.",
+            "fr": "Vide : la première T.One.",
+            "de": "Leer: die erste T.One.",
+            "es": "Vacío: la primera T.One."
+          }
+        }
+      ],
+      "action_timeout_seconds": 60
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "mode_changed",
+      "label": {
+        "en": "The mode of an Aldes product changes",
+        "fr": "Le mode d’un produit Aldes change",
+        "de": "Der Modus eines Aldes-Produkts ändert sich",
+        "es": "El modo de un producto Aldes cambia"
+      },
+      "description": {
+        "en": "The ventilation mode or the air mode of a T.One changes in the app, by its schedule or on the product, seen at the next reading. A change Gladys asked for does not fire.",
+        "fr": "Le mode de ventilation ou le mode air d’une T.One change dans l’application, par sa programmation ou sur le produit, vu au relevé suivant. Un changement demandé par Gladys ne déclenche rien.",
+        "de": "Der Lüftungsmodus oder der Luftmodus einer T.One ändert sich in der App, durch das Zeitprogramm oder am Gerät, sichtbar bei der nächsten Abfrage. Eine von Gladys angeforderte Änderung löst nichts aus.",
+        "es": "El modo de ventilación o el modo aire de una T.One cambia en la app, por su programación o en el producto, visto en la siguiente lectura. Un cambio pedido por Gladys no dispara nada."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every Aldes product.",
+            "fr": "Vide : tous les produits Aldes.",
+            "de": "Leer: alle Aldes-Produkte.",
+            "es": "Vacío: todos los productos Aldes."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "label": {
+            "en": "New mode",
+            "fr": "Nouveau mode",
+            "de": "Neuer Modus",
+            "es": "Nuevo modo"
+          },
+          "description": {
+            "en": "Empty: any mode.",
+            "fr": "Vide : tous les modes.",
+            "de": "Leer: jeder Modus.",
+            "es": "Vacío: cualquier modo."
+          },
+          "options": [
+            {
+              "value": "daily",
+              "label": {
+                "en": "VMC: Daily",
+                "fr": "VMC : Quotidien",
+                "de": "Lüftung: Täglich",
+                "es": "VMC: Diario"
+              }
+            },
+            {
+              "value": "boost",
+              "label": {
+                "en": "VMC: Boost",
+                "fr": "VMC : Boost",
+                "de": "Lüftung: Boost",
+                "es": "VMC: Boost"
+              }
+            },
+            {
+              "value": "guests",
+              "label": {
+                "en": "VMC: Guests",
+                "fr": "VMC : Invités",
+                "de": "Lüftung: Gäste",
+                "es": "VMC: Invitados"
+              }
+            },
+            {
+              "value": "holidays",
+              "label": {
+                "en": "VMC: Holidays",
+                "fr": "VMC : Vacances",
+                "de": "Lüftung: Urlaub",
+                "es": "VMC: Vacaciones"
+              }
+            },
+            {
+              "value": "schedule",
+              "label": {
+                "en": "VMC: Schedule",
+                "fr": "VMC : Programmation",
+                "de": "Lüftung: Zeitprogramm",
+                "es": "VMC: Programación"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "T.One: Off",
+                "fr": "T.One : Arrêt",
+                "de": "T.One: Aus",
+                "es": "T.One: Apagado"
+              }
+            },
+            {
+              "value": "heat_comfort",
+              "label": {
+                "en": "T.One: Heating comfort",
+                "fr": "T.One : Chauffage confort",
+                "de": "T.One: Heizen Komfort",
+                "es": "T.One: Calefacción confort"
+              }
+            },
+            {
+              "value": "heat_eco",
+              "label": {
+                "en": "T.One: Heating eco",
+                "fr": "T.One : Chauffage éco",
+                "de": "T.One: Heizen Eco",
+                "es": "T.One: Calefacción eco"
+              }
+            },
+            {
+              "value": "heat_prog_a",
+              "label": {
+                "en": "T.One: Heating program A",
+                "fr": "T.One : Chauffage programme A",
+                "de": "T.One: Heizen Programm A",
+                "es": "T.One: Calefacción programa A"
+              }
+            },
+            {
+              "value": "heat_prog_b",
+              "label": {
+                "en": "T.One: Heating program B",
+                "fr": "T.One : Chauffage programme B",
+                "de": "T.One: Heizen Programm B",
+                "es": "T.One: Calefacción programa B"
+              }
+            },
+            {
+              "value": "cool_comfort",
+              "label": {
+                "en": "T.One: Cooling comfort",
+                "fr": "T.One : Rafraîchissement confort",
+                "de": "T.One: Kühlen Komfort",
+                "es": "T.One: Refrigeración confort"
+              }
+            },
+            {
+              "value": "cool_boost",
+              "label": {
+                "en": "T.One: Cooling boost",
+                "fr": "T.One : Rafraîchissement boost",
+                "de": "T.One: Kühlen Boost",
+                "es": "T.One: Refrigeración boost"
+              }
+            },
+            {
+              "value": "cool_prog_c",
+              "label": {
+                "en": "T.One: Cooling program C",
+                "fr": "T.One : Rafraîchissement programme C",
+                "de": "T.One: Kühlen Programm C",
+                "es": "T.One: Refrigeración programa C"
+              }
+            },
+            {
+              "value": "cool_prog_d",
+              "label": {
+                "en": "T.One: Cooling program D",
+                "fr": "T.One : Rafraîchissement programme D",
+                "de": "T.One: Kühlen Programm D",
+                "es": "T.One: Refrigeración programa D"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "kind",
+          "type": "string",
+          "label": {
+            "en": "Kind (ventilation, heat_pump)",
+            "fr": "Type (ventilation, heat_pump)",
+            "de": "Art (ventilation, heat_pump)",
+            "es": "Tipo (ventilation, heat_pump)"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "New mode",
+            "fr": "Nouveau mode",
+            "de": "Neuer Modus",
+            "es": "Nuevo modo"
+          }
+        },
+        {
+          "key": "previous_mode",
+          "type": "string",
+          "label": {
+            "en": "Previous mode",
+            "fr": "Mode précédent",
+            "de": "Vorheriger Modus",
+            "es": "Modo anterior"
+          }
+        }
+      ]
+    },
+    {
+      "key": "connection_changed",
+      "label": {
+        "en": "An Aldes product goes offline or back online",
+        "fr": "Un produit Aldes se déconnecte ou se reconnecte",
+        "de": "Ein Aldes-Produkt geht offline oder wieder online",
+        "es": "Un producto Aldes se desconecta o se reconecta"
+      },
+      "description": {
+        "en": "The connection between the product and the Aldes cloud, as Aldes reports it. Offline, the product does not get the commands.",
+        "fr": "La connexion entre le produit et le cloud Aldes, telle qu’Aldes la signale. Hors ligne, le produit ne reçoit pas les commandes.",
+        "de": "Die Verbindung zwischen dem Produkt und der Aldes-Cloud, wie Aldes sie meldet. Offline erhält das Produkt keine Befehle.",
+        "es": "La conexión entre el producto y la nube de Aldes, tal como la indica Aldes. Sin conexión, el producto no recibe las órdenes."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every Aldes product.",
+            "fr": "Vide : tous les produits Aldes.",
+            "de": "Leer: alle Aldes-Produkte.",
+            "es": "Vacío: todos los productos Aldes."
+          }
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "New state",
+            "fr": "Nouvel état",
+            "de": "Neuer Zustand",
+            "es": "Nuevo estado"
+          },
+          "description": {
+            "en": "Empty: both.",
+            "fr": "Vide : les deux.",
+            "de": "Leer: beides.",
+            "es": "Vacío: ambos."
+          },
+          "options": [
+            {
+              "value": "offline",
+              "label": {
+                "en": "Offline",
+                "fr": "Hors ligne",
+                "de": "Offline",
+                "es": "Sin conexión"
+              }
+            },
+            {
+              "value": "online",
+              "label": {
+                "en": "Online",
+                "fr": "En ligne",
+                "de": "Online",
+                "es": "En línea"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "kind",
+          "type": "string",
+          "label": {
+            "en": "Kind (ventilation, heat_pump)",
+            "fr": "Type (ventilation, heat_pump)",
+            "de": "Art (ventilation, heat_pump)",
+            "es": "Tipo (ventilation, heat_pump)"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State (online, offline)",
+            "fr": "État (online, offline)",
+            "de": "Zustand (online, offline)",
+            "es": "Estado (online, offline)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "filter_due",
+      "label": {
+        "en": "An Aldes filter is due",
+        "fr": "Un filtre Aldes est à changer",
+        "de": "Ein Aldes-Filter ist fällig",
+        "es": "Hay que cambiar un filtro Aldes"
+      },
+      "description": {
+        "en": "The remaining life of the filter Aldes reports goes down to 10 % or less. Fires once, until the filter is changed.",
+        "fr": "La durée de vie restante du filtre signalée par Aldes descend à 10 % ou moins. Une seule fois, jusqu’au changement du filtre.",
+        "de": "Die von Aldes gemeldete Restlaufzeit des Filters sinkt auf 10 % oder weniger. Einmalig, bis zum Filterwechsel.",
+        "es": "La vida útil restante del filtro indicada por Aldes baja al 10 % o menos. Una sola vez, hasta el cambio del filtro."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every Aldes product.",
+            "fr": "Vide : tous les produits Aldes.",
+            "de": "Leer: alle Aldes-Produkte.",
+            "es": "Vacío: todos los productos Aldes."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "kind",
+          "type": "string",
+          "label": {
+            "en": "Kind (ventilation, heat_pump)",
+            "fr": "Type (ventilation, heat_pump)",
+            "de": "Art (ventilation, heat_pump)",
+            "es": "Tipo (ventilation, heat_pump)"
+          }
+        },
+        {
+          "key": "filter_life",
+          "type": "number",
+          "label": {
+            "en": "Filter life (%)",
+            "fr": "Durée de vie du filtre (%)",
+            "de": "Filterrestlaufzeit (%)",
+            "es": "Vida útil del filtro (%)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "holiday_changed",
+      "label": {
+        "en": "An Aldes holiday starts or ends",
+        "fr": "Des vacances Aldes commencent ou finissent",
+        "de": "Ein Aldes-Urlaub beginnt oder endet",
+        "es": "Unas vacaciones Aldes empiezan o terminan"
+      },
+      "description": {
+        "en": "The holiday mode of a product starts or ends (app, schedule, end date). A holiday Gladys set does not fire.",
+        "fr": "Le mode vacances d’un produit commence ou finit (application, programmation, date de fin). Des vacances posées par Gladys ne déclenchent rien.",
+        "de": "Der Urlaubsmodus eines Produkts beginnt oder endet (App, Zeitprogramm, Enddatum). Ein von Gladys gesetzter Urlaub löst nichts aus.",
+        "es": "El modo vacaciones de un producto empieza o termina (app, programación, fecha de fin). Unas vacaciones puestas por Gladys no disparan nada."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every Aldes product.",
+            "fr": "Vide : tous les produits Aldes.",
+            "de": "Leer: alle Aldes-Produkte.",
+            "es": "Vacío: todos los productos Aldes."
+          }
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "Change",
+            "fr": "Changement",
+            "de": "Änderung",
+            "es": "Cambio"
+          },
+          "description": {
+            "en": "Empty: both.",
+            "fr": "Vide : les deux.",
+            "de": "Leer: beides.",
+            "es": "Vacío: ambos."
+          },
+          "options": [
+            {
+              "value": "started",
+              "label": {
+                "en": "Started",
+                "fr": "Commencées",
+                "de": "Begonnen",
+                "es": "Empezadas"
+              }
+            },
+            {
+              "value": "ended",
+              "label": {
+                "en": "Ended",
+                "fr": "Finies",
+                "de": "Beendet",
+                "es": "Terminadas"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "kind",
+          "type": "string",
+          "label": {
+            "en": "Kind (ventilation, heat_pump)",
+            "fr": "Type (ventilation, heat_pump)",
+            "de": "Art (ventilation, heat_pump)",
+            "es": "Tipo (ventilation, heat_pump)"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "Change (started, ended)",
+            "fr": "Changement (started, ended)",
+            "de": "Änderung (started, ended)",
+            "es": "Cambio (started, ended)"
+          }
+        },
+        {
+          "key": "end",
+          "type": "string",
+          "label": {
+            "en": "End date of a T.One holiday",
+            "fr": "Date de fin des vacances d’une T.One",
+            "de": "Enddatum des Urlaubs einer T.One",
+            "es": "Fecha de fin de las vacaciones de una T.One"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "set_ventilation_mode",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Set the Aldes ventilation mode",
+        "fr": "Changer le mode de la VMC Aldes",
+        "de": "Aldes-Lüftungsmodus setzen",
+        "es": "Cambiar el modo de la VMC Aldes"
+      },
+      "description": {
+        "en": "Daily, boost, guests or schedule. For a holiday, use “Set an Aldes holiday”.",
+        "fr": "Quotidien, boost, invités ou programmation. Pour des vacances, utilisez « Poser des vacances Aldes ».",
+        "de": "Täglich, Boost, Gäste oder Zeitprogramm. Für einen Urlaub „Aldes-Urlaub setzen“ verwenden.",
+        "es": "Diario, boost, invitados o programación. Para unas vacaciones, use «Poner vacaciones Aldes»."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Ventilation unit",
+            "fr": "VMC",
+            "de": "Lüftungsgerät",
+            "es": "VMC"
+          },
+          "description": {
+            "en": "Empty: every ventilation unit.",
+            "fr": "Vide : toutes les VMC.",
+            "de": "Leer: alle Lüftungsgeräte.",
+            "es": "Vacío: todas las VMC."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "required": true,
+          "default": "daily",
+          "label": {
+            "en": "Mode",
+            "fr": "Mode",
+            "de": "Modus",
+            "es": "Modo"
+          },
+          "options": [
+            {
+              "value": "daily",
+              "label": {
+                "en": "Daily",
+                "fr": "Quotidien",
+                "de": "Täglich",
+                "es": "Diario"
+              }
+            },
+            {
+              "value": "boost",
+              "label": {
+                "en": "Boost",
+                "fr": "Boost",
+                "de": "Boost",
+                "es": "Boost"
+              }
+            },
+            {
+              "value": "guests",
+              "label": {
+                "en": "Guests",
+                "fr": "Invités",
+                "de": "Gäste",
+                "es": "Invitados"
+              }
+            },
+            {
+              "value": "schedule",
+              "label": {
+                "en": "Schedule",
+                "fr": "Programmation",
+                "de": "Zeitprogramm",
+                "es": "Programación"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Products done",
+            "fr": "Produits traités",
+            "de": "Erledigte Produkte",
+            "es": "Productos hechos"
+          }
+        },
+        {
+          "key": "failed",
+          "type": "number",
+          "label": {
+            "en": "Products refused",
+            "fr": "Produits refusés",
+            "de": "Abgelehnte Produkte",
+            "es": "Productos rechazados"
+          }
+        }
+      ]
+    },
+    {
+      "key": "boost_ventilation",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Boost the Aldes ventilation",
+        "fr": "Booster la VMC Aldes",
+        "de": "Aldes-Lüftung boosten",
+        "es": "Activar el boost de la VMC Aldes"
+      },
+      "description": {
+        "en": "Boost for a duration, then back to the previous mode. Gladys keeps the timer: a restart meanwhile leaves the boost on.",
+        "fr": "Boost pendant une durée, puis retour au mode précédent. Gladys tient le minuteur : un redémarrage entre-temps laisse le boost actif.",
+        "de": "Boost für eine Dauer, dann zurück zum vorherigen Modus. Gladys hält den Timer: Ein Neustart in der Zwischenzeit lässt den Boost an.",
+        "es": "Boost durante un tiempo y luego vuelta al modo anterior. Gladys lleva el temporizador: un reinicio mientras tanto deja el boost activo."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Ventilation unit",
+            "fr": "VMC",
+            "de": "Lüftungsgerät",
+            "es": "VMC"
+          },
+          "description": {
+            "en": "Empty: every ventilation unit.",
+            "fr": "Vide : toutes les VMC.",
+            "de": "Leer: alle Lüftungsgeräte.",
+            "es": "Vacío: todas las VMC."
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "min": 0,
+          "max": 240,
+          "default": 30,
+          "label": {
+            "en": "Duration (minutes)",
+            "fr": "Durée (minutes)",
+            "de": "Dauer (Minuten)",
+            "es": "Duración (minutos)"
+          },
+          "description": {
+            "en": "0: until another mode is chosen.",
+            "fr": "0 : jusqu’au choix d’un autre mode.",
+            "de": "0: bis ein anderer Modus gewählt wird.",
+            "es": "0: hasta que se elija otro modo."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Products done",
+            "fr": "Produits traités",
+            "de": "Erledigte Produkte",
+            "es": "Productos hechos"
+          }
+        },
+        {
+          "key": "failed",
+          "type": "number",
+          "label": {
+            "en": "Products refused",
+            "fr": "Produits refusés",
+            "de": "Abgelehnte Produkte",
+            "es": "Productos rechazados"
+          }
+        },
+        {
+          "key": "until",
+          "type": "string",
+          "label": {
+            "en": "End of the boost (HH:MM, empty: none)",
+            "fr": "Fin du boost (HH:MM, vide : aucune)",
+            "de": "Ende des Boosts (HH:MM, leer: keins)",
+            "es": "Fin del boost (HH:MM, vacío: ninguno)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_air_mode",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Set the T.One air mode",
+        "fr": "Changer le mode air de la T.One",
+        "de": "T.One-Luftmodus setzen",
+        "es": "Cambiar el modo aire de la T.One"
+      },
+      "description": {
+        "en": "Off, heating (comfort, eco, program A or B) or cooling (comfort, boost, program C or D).",
+        "fr": "Arrêt, chauffage (confort, éco, programme A ou B) ou rafraîchissement (confort, boost, programme C ou D).",
+        "de": "Aus, Heizen (Komfort, Eco, Programm A oder B) oder Kühlen (Komfort, Boost, Programm C oder D).",
+        "es": "Apagado, calefacción (confort, eco, programa A o B) o refrigeración (confort, boost, programa C o D)."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "T.One heat pump",
+            "fr": "Pompe à chaleur T.One",
+            "de": "T.One-Wärmepumpe",
+            "es": "Bomba de calor T.One"
+          },
+          "description": {
+            "en": "Empty: every T.One.",
+            "fr": "Vide : toutes les T.One.",
+            "de": "Leer: alle T.One.",
+            "es": "Vacío: todas las T.One."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "required": true,
+          "default": "heat_comfort",
+          "label": {
+            "en": "Mode",
+            "fr": "Mode",
+            "de": "Modus",
+            "es": "Modo"
+          },
+          "options": [
+            {
+              "value": "off",
+              "label": {
+                "en": "Off",
+                "fr": "Arrêt",
+                "de": "Aus",
+                "es": "Apagado"
+              }
+            },
+            {
+              "value": "heat_comfort",
+              "label": {
+                "en": "Heating comfort",
+                "fr": "Chauffage confort",
+                "de": "Heizen Komfort",
+                "es": "Calefacción confort"
+              }
+            },
+            {
+              "value": "heat_eco",
+              "label": {
+                "en": "Heating eco",
+                "fr": "Chauffage éco",
+                "de": "Heizen Eco",
+                "es": "Calefacción eco"
+              }
+            },
+            {
+              "value": "heat_prog_a",
+              "label": {
+                "en": "Heating program A",
+                "fr": "Chauffage programme A",
+                "de": "Heizen Programm A",
+                "es": "Calefacción programa A"
+              }
+            },
+            {
+              "value": "heat_prog_b",
+              "label": {
+                "en": "Heating program B",
+                "fr": "Chauffage programme B",
+                "de": "Heizen Programm B",
+                "es": "Calefacción programa B"
+              }
+            },
+            {
+              "value": "cool_comfort",
+              "label": {
+                "en": "Cooling comfort",
+                "fr": "Rafraîchissement confort",
+                "de": "Kühlen Komfort",
+                "es": "Refrigeración confort"
+              }
+            },
+            {
+              "value": "cool_boost",
+              "label": {
+                "en": "Cooling boost",
+                "fr": "Rafraîchissement boost",
+                "de": "Kühlen Boost",
+                "es": "Refrigeración boost"
+              }
+            },
+            {
+              "value": "cool_prog_c",
+              "label": {
+                "en": "Cooling program C",
+                "fr": "Rafraîchissement programme C",
+                "de": "Kühlen Programm C",
+                "es": "Refrigeración programa C"
+              }
+            },
+            {
+              "value": "cool_prog_d",
+              "label": {
+                "en": "Cooling program D",
+                "fr": "Rafraîchissement programme D",
+                "de": "Kühlen Programm D",
+                "es": "Refrigeración programa D"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Products done",
+            "fr": "Produits traités",
+            "de": "Erledigte Produkte",
+            "es": "Productos hechos"
+          }
+        },
+        {
+          "key": "failed",
+          "type": "number",
+          "label": {
+            "en": "Products refused",
+            "fr": "Produits refusés",
+            "de": "Abgelehnte Produkte",
+            "es": "Productos rechazados"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_hot_water",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Set the T.One hot water",
+        "fr": "Régler l’eau chaude de la T.One",
+        "de": "T.One-Warmwasser einstellen",
+        "es": "Ajustar el agua caliente de la T.One"
+      },
+      "description": {
+        "en": "On, boost or off, on a T.One AquaAIR.",
+        "fr": "Marche, boost ou arrêt, sur une T.One AquaAIR.",
+        "de": "Ein, Boost oder Aus, an einer T.One AquaAIR.",
+        "es": "Encendido, boost o apagado, en una T.One AquaAIR."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "T.One heat pump",
+            "fr": "Pompe à chaleur T.One",
+            "de": "T.One-Wärmepumpe",
+            "es": "Bomba de calor T.One"
+          },
+          "description": {
+            "en": "Empty: every T.One.",
+            "fr": "Vide : toutes les T.One.",
+            "de": "Leer: alle T.One.",
+            "es": "Vacío: todas las T.One."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "required": true,
+          "default": "boost",
+          "label": {
+            "en": "Hot water",
+            "fr": "Eau chaude",
+            "de": "Warmwasser",
+            "es": "Agua caliente"
+          },
+          "options": [
+            {
+              "value": "on",
+              "label": {
+                "en": "On",
+                "fr": "Marche",
+                "de": "Ein",
+                "es": "Encendido"
+              }
+            },
+            {
+              "value": "boost",
+              "label": {
+                "en": "Boost",
+                "fr": "Boost",
+                "de": "Boost",
+                "es": "Boost"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "Off",
+                "fr": "Arrêt",
+                "de": "Aus",
+                "es": "Apagado"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Products done",
+            "fr": "Produits traités",
+            "de": "Erledigte Produkte",
+            "es": "Productos hechos"
+          }
+        },
+        {
+          "key": "failed",
+          "type": "number",
+          "label": {
+            "en": "Products refused",
+            "fr": "Produits refusés",
+            "de": "Abgelehnte Produkte",
+            "es": "Productos rechazados"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_holiday",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Set an Aldes holiday",
+        "fr": "Poser des vacances Aldes",
+        "de": "Aldes-Urlaub setzen",
+        "es": "Poner vacaciones Aldes"
+      },
+      "description": {
+        "en": "Holiday mode from now on for a number of days, or 0 to cancel it.",
+        "fr": "Mode vacances dès maintenant pour un nombre de jours, ou 0 pour l’annuler.",
+        "de": "Urlaubsmodus ab jetzt für eine Anzahl Tage, oder 0 zum Aufheben.",
+        "es": "Modo vacaciones desde ahora durante un número de días, o 0 para anularlo."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every Aldes product.",
+            "fr": "Vide : tous les produits Aldes.",
+            "de": "Leer: alle Aldes-Produkte.",
+            "es": "Vacío: todos los productos Aldes."
+          }
+        },
+        {
+          "key": "days",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "max": 365,
+          "default": 7,
+          "label": {
+            "en": "Days",
+            "fr": "Jours",
+            "de": "Tage",
+            "es": "Días"
+          },
+          "description": {
+            "en": "0: cancel the holiday.",
+            "fr": "0 : annuler les vacances.",
+            "de": "0: Urlaub aufheben.",
+            "es": "0: anular las vacaciones."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Products done",
+            "fr": "Produits traités",
+            "de": "Erledigte Produkte",
+            "es": "Productos hechos"
+          }
+        },
+        {
+          "key": "failed",
+          "type": "number",
+          "label": {
+            "en": "Products refused",
+            "fr": "Produits refusés",
+            "de": "Abgelehnte Produkte",
+            "es": "Productos rechazados"
+          }
+        },
+        {
+          "key": "until",
+          "type": "string",
+          "label": {
+            "en": "Return day (YYYY-MM-DD, empty: cancelled)",
+            "fr": "Jour du retour (AAAA-MM-JJ, vide : annulé)",
+            "de": "Rückkehrtag (JJJJ-MM-TT, leer: aufgehoben)",
+            "es": "Día de vuelta (AAAA-MM-DD, vacío: anulado)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "read_now",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Read Aldes now",
+        "fr": "Relever Aldes maintenant",
+        "de": "Aldes jetzt abfragen",
+        "es": "Leer Aldes ahora"
+      },
+      "description": {
+        "en": "Reads every product now (once per 30 seconds at most) and gives the values of one of them.",
+        "fr": "Relève tous les produits maintenant (une fois par 30 secondes au plus) et donne les valeurs de l’un d’eux.",
+        "de": "Fragt alle Produkte jetzt ab (höchstens alle 30 Sekunden) und liefert die Werte eines davon.",
+        "es": "Lee todos los productos ahora (una vez cada 30 segundos como máximo) y da los valores de uno de ellos."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Product",
+            "fr": "Produit",
+            "de": "Produkt",
+            "es": "Producto"
+          },
+          "description": {
+            "en": "Empty: the first product.",
+            "fr": "Vide : le premier produit.",
+            "de": "Leer: das erste Produkt.",
+            "es": "Vacío: el primer producto."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "Mode (key)",
+            "fr": "Mode (clé)",
+            "de": "Modus (Schlüssel)",
+            "es": "Modo (clave)"
+          }
+        },
+        {
+          "key": "mode_label",
+          "type": "string",
+          "label": {
+            "en": "Mode (text)",
+            "fr": "Mode (texte)",
+            "de": "Modus (Text)",
+            "es": "Modo (texto)"
+          }
+        },
+        {
+          "key": "co2",
+          "type": "number",
+          "label": {
+            "en": "CO2 (ppm, -1: none)",
+            "fr": "CO2 (ppm, -1 : aucun)",
+            "de": "CO2 (ppm, -1: keiner)",
+            "es": "CO2 (ppm, -1: ninguno)"
+          }
+        },
+        {
+          "key": "temperature",
+          "type": "number",
+          "label": {
+            "en": "Temperature (°C, -1: none)",
+            "fr": "Température (°C, -1 : aucune)",
+            "de": "Temperatur (°C, -1: keine)",
+            "es": "Temperatura (°C, -1: ninguna)"
+          }
+        },
+        {
+          "key": "humidity",
+          "type": "number",
+          "label": {
+            "en": "Kitchen humidity (%, -1: none)",
+            "fr": "Humidité cuisine (%, -1 : aucune)",
+            "de": "Feuchte Küche (%, -1: keine)",
+            "es": "Humedad cocina (%, -1: ninguna)"
+          }
+        },
+        {
+          "key": "hot_water",
+          "type": "number",
+          "label": {
+            "en": "Hot water (%, -1: none)",
+            "fr": "Eau chaude (%, -1 : aucune)",
+            "de": "Warmwasser (%, -1: keins)",
+            "es": "Agua caliente (%, -1: ninguna)"
+          }
+        },
+        {
+          "key": "filter_life",
+          "type": "number",
+          "label": {
+            "en": "Filter life (%, -1: unknown)",
+            "fr": "Durée de vie du filtre (%, -1 : inconnue)",
+            "de": "Filterrestlaufzeit (%, -1: unbekannt)",
+            "es": "Vida útil del filtro (%, -1: desconocida)"
+          }
+        },
+        {
+          "key": "online",
+          "type": "boolean",
+          "label": {
+            "en": "Online",
+            "fr": "En ligne",
+            "de": "Online",
+            "es": "En línea"
+          }
+        }
+      ]
+    }
+  ]
+}
