@@ -5,7 +5,7 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
-## [0.1.0] - unreleased
+## [0.1.0] - 2026-11-22
 
 ### Added
 
@@ -18,3 +18,5 @@ each release from the Conventional Commits: do not edit it by hand.
 - Scene actions: set the ventilation mode, boost the ventilation for a duration then go back to the previous mode, set the T.One air mode, set the T.One hot water, set or cancel a holiday, read Aldes now.
 - Dashboard widgets: the ventilation unit (CO2, kitchen, filter, mode, "Boost 30 min" and "Daily") and the T.One (indoor temperature, hot water, rooms, modes).
 - English, French, German and Spanish everywhere: settings, devices, widgets, scenes and documentation.
+
+[0.1.0]: https://github.com/William-De71/gladys-aldes/releases/tag/v0.1.0
